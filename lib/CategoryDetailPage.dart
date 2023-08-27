@@ -2,26 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-class DressDetailPage extends StatefulWidget {
-  final int dressId;
+class CategoryDetailPage extends StatefulWidget {
+  final int catId;
 
-  DressDetailPage({required this.dressId});
+  CategoryDetailPage({required this.catId});
 
   @override
-  _DressDetailPageState createState() => _DressDetailPageState();
+  _CategoryDetailPageState createState() => _CategoryDetailPageState();
 }
 
-class _DressDetailPageState extends State<DressDetailPage> {
-  Map<String, dynamic> dressDetails = {};
+class _CategoryDetailPageState extends State<CategoryDetailPage> {
+  Map<String, dynamic> categoryDetails = {};
 
-  Future<void> fetchDressDetails() async {
+  Future<void> fetchCategoryDetails() async {
     final response = await http.get(
-      Uri.parse('http://pat.infolab.ecam.be:60848/dress/${widget.dressId}'),
+      Uri.parse('http://pat.infolab.ecam.be:60848/category/${widget.catId}'),
     );
 
     if (response.statusCode == 200) {
       setState(() {
-        dressDetails = json.decode(response.body);
+        categoryDetails = json.decode(response.body);
       });
     } else {
       print('Erreur lors de la récupération des détails de la robe.');
@@ -31,12 +31,12 @@ class _DressDetailPageState extends State<DressDetailPage> {
   @override
   void initState() {
     super.initState();
-    fetchDressDetails();
+    fetchCategoryDetails();
   }
 
-  Future<void> _deleteDress(int dressId) async {
+  Future<void> _deleteCategory(int catId) async {
     final response = await http.delete(
-      Uri.parse('http://pat.infolab.ecam.be:60848/dress/$dressId'),
+      Uri.parse('http://pat.infolab.ecam.be:60848/category/$catId'),
     );
 
     if (response.statusCode == 200) {
@@ -45,14 +45,14 @@ class _DressDetailPageState extends State<DressDetailPage> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Robe supprimée'),
-            content: Text('La robe a été supprimée avec succès.'),
+            title: Text('Catégorie supprimée'),
+            content: Text('La catégorie a été supprimée avec succès.'),
             actions: [
               ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).pop(); // Ferme la boîte de dialogue
-                  Navigator.pushReplacementNamed(
-                      context, '/dresses'); // Redirige vers la liste des robes
+                  Navigator.pushReplacementNamed(context,
+                      '/categories'); // Redirige vers la liste des robes
                 },
                 child: Text('OK'),
               ),
@@ -61,7 +61,7 @@ class _DressDetailPageState extends State<DressDetailPage> {
         },
       );
     } else {
-      print('Erreur lors de la suppression de la robe.');
+      print('Erreur lors de la suppression de la catégorie.');
     }
   }
 
@@ -69,25 +69,23 @@ class _DressDetailPageState extends State<DressDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Détails de la robe'),
+        title: Text('Détails de la catégorie'),
       ),
       body: Center(
-        child: dressDetails.isNotEmpty
+        child: categoryDetails.isNotEmpty
             ? Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text('Nom: ${dressDetails['name']}'),
-                  Text('Prix: ${dressDetails['price']} €'),
-                  Text('Matière: ${dressDetails['material']}'),
-                  Text('Taille: ${dressDetails['size']}'),
+                  Text('Nom: ${categoryDetails['name']}'),
+
                   // Ajoutez d'autres informations si nécessaire
                   ElevatedButton(
                     onPressed: () {
                       // Appel à la fonction de suppression ici
-                      _deleteDress(widget.dressId);
+                      _deleteCategory(widget.catId);
                     },
-                    child: Text('Supprimer cette robe'),
+                    child: Text('Supprimer cette catégorie'),
                   )
                 ],
               )

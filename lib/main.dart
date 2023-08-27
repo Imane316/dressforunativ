@@ -1,9 +1,10 @@
-import 'package:dressforunativ/CreateDress.dart';
-//import 'package:dressforunativ/Searchbar.dart';
 import 'package:flutter/material.dart';
+import 'CreateCategory.dart';
 import 'navbar.dart';
 import 'dresslist.dart';
 import 'Searchbar.dart';
+import 'categories.dart';
+import 'CreateDress.dart';
 
 void main() => runApp(MyApp());
 
@@ -20,6 +21,8 @@ class MyApp extends StatelessWidget {
         //'/dresses': (context) => DressListPage(),
         '/dress': (context) => CreateDressPage(),
         '/dresses': (context) => DressListPage(),
+        '/categories': (context) => CategoryListPage(),
+        '/category': (context) => CreateCategoryPage(),
         '/search': (context) => SearchPage(),
         /*'/search': (context) => SearchPage(), // Ajoutez cette ligne pour la route de recherche*/
 

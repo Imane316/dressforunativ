@@ -24,6 +24,7 @@ class Navbar extends StatelessWidget {
                 _buildNavItem('Robes', '/dresses', context),
                 _buildNavItem('Nv robe', '/dress', context),
                 _buildNavItem('Catégories', '/categories', context),
+                _buildNavItem('Nv cat', '/category', context),
                 _buildNavItem('Recherche', '/search', context),
                 _buildNavItem('Contact', '/contact', context),
                 _buildNavItem('Se connecter', '/login', context),

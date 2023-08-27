@@ -43,7 +43,7 @@ class CreateDressPage extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 // Ici tu pourrais appeler une fonction pour créer la robe
-                _createDress();
+                _createDress(context);
               },
               child: Text('Créer la robe'),
             ),
@@ -54,7 +54,7 @@ class CreateDressPage extends StatelessWidget {
   }
 
   // Cette fonction pourrait être utilisée pour créer la robe
-  Future<void> _createDress() async {
+  Future<void> _createDress(BuildContext context) async {
     // Récupérer les valeurs des contrôleurs
     String name = _nameController.text;
     String picture = _pictureController.text;
@@ -88,11 +88,28 @@ class CreateDressPage extends StatelessWidget {
     );
 
     if (response.statusCode == 200) {
-      // La robe a été créée avec succès, tu pourrais effectuer une action ici
-      print('Robe créée avec succès');
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Robe ajoutée'),
+            content: Text('La robe a été ajoutée avec succès.'),
+            actions: [
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).pop(); // Ferme la boîte de dialogue
+                  Navigator.pushReplacementNamed(
+                      context, '/dresses'); // Redirige vers la liste des robes
+                },
+                child: Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+      print('Robe ajoutée avec succès');
     } else {
-      // Une erreur s'est produite lors de la création de la robe
-      print('Erreur lors de la création de la robe');
+      print('Erreur lors de l\'ajout de la robe');
     }
   }
 }
