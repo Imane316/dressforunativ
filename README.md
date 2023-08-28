@@ -25,7 +25,7 @@ L'application communique avec l'API DressForU pour récupérer et mettre à jour
 
 ## Getting Started
 1. Clonez ce dépôt sur votre machine locale à l'aide de la commande suivante :
-git clone https://github.com/your-username/DressForU.git
+git clone https://github.com/imane316/DressForU.git
 
 2. Naviguez jusqu'au répertoire du projet :
 cd DressForU
