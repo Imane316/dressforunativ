@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'UpdateDressPage.dart';
 
 class DressDetailPage extends StatefulWidget {
-  final int dressId;
-
   DressDetailPage({required this.dressId});
 
   @override
   _DressDetailPageState createState() => _DressDetailPageState();
+  late int dressId;
 }
 
 class _DressDetailPageState extends State<DressDetailPage> {
@@ -88,7 +88,18 @@ class _DressDetailPageState extends State<DressDetailPage> {
                       _deleteDress(widget.dressId);
                     },
                     child: Text('Supprimer cette robe'),
-                  )
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      // Naviguer vers la page de modification ici
+                      Navigator.pushNamed(
+                        context,
+                        '/updateDress',
+                        arguments: {'dressId': widget.dressId},
+                      );
+                    },
+                    child: Text('Modifier cette robe'),
+                  ),
                 ],
               )
             : CircularProgressIndicator(), // Affiche un indicateur de chargement si les détails ne sont pas encore récupérés

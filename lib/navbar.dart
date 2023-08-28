@@ -4,22 +4,26 @@ class Navbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.white,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start, // Alignement à gauche
         children: [
           Container(
             padding: EdgeInsets.all(16),
             child: Text(
               'DressForU',
               style: TextStyle(
+                color: Colors.purple,
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ),
-          Container(
+          Padding(
             padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            child: Column(
+              crossAxisAlignment:
+                  CrossAxisAlignment.start, // Alignement à gauche
               children: [
                 _buildNavItem('Robes', '/dresses', context),
                 _buildNavItem('Nv robe', '/dress', context),
@@ -54,7 +58,7 @@ class Navbar extends StatelessWidget {
         title,
         style: TextStyle(
           fontSize: 16,
-          color: Colors.white,
+          color: Colors.purple,
         ),
       ),
     );
@@ -62,11 +66,11 @@ class Navbar extends StatelessWidget {
 
   Widget _buildImageItem(String imageUrl) {
     return Container(
-      margin: EdgeInsets.only(right: 8),
+      margin: EdgeInsets.only(right: 50),
       child: Image.network(
         imageUrl,
-        width: 100,
-        height: 100,
+        width: 200,
+        height: 200,
         fit: BoxFit.cover,
       ),
     );

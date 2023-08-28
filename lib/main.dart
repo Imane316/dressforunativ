@@ -5,6 +5,8 @@ import 'dresslist.dart';
 import 'Searchbar.dart';
 import 'categories.dart';
 import 'CreateDress.dart';
+import 'UpdateDressPage.dart';
+import 'DressDetailPage.dart';
 
 void main() => runApp(MyApp());
 
@@ -24,6 +26,9 @@ class MyApp extends StatelessWidget {
         '/categories': (context) => CategoryListPage(),
         '/category': (context) => CreateCategoryPage(),
         '/search': (context) => SearchPage(),
+        '/dressDetail': (context) =>
+            DressDetailPage(dressId: 0), // Replace with the DressDetailPage
+        '/updateDress': (context) => UpdateDressPage(dressId: 0), //
         /*'/search': (context) => SearchPage(), // Ajoutez cette ligne pour la route de recherche*/
 
         // Autres routes...
