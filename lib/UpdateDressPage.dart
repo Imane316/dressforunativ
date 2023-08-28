@@ -14,6 +14,18 @@ class UpdateDressPage extends StatefulWidget {
 
 class _UpdateDressPageState extends State<UpdateDressPage>
     with AutomaticKeepAliveClientMixin {
+  late int dressId;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final args =
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>?;
+    if (args != null && args.containsKey('dressId')) {
+      dressId = args['dressId'];
+    }
+  }
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _priceController = TextEditingController();

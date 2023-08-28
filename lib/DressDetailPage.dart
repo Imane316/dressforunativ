@@ -77,7 +77,8 @@ class _DressDetailPageState extends State<DressDetailPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text('Nom: ${dressDetails['name']}'),
+                  if (dressDetails.isNotEmpty)
+                    Text('Nom: ${dressDetails['name']}'),
                   Text('Prix: ${dressDetails['price']} €'),
                   Text('Matière: ${dressDetails['material']}'),
                   Text('Taille: ${dressDetails['size']}'),
