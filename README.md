@@ -3,7 +3,7 @@
 # Application mobile DressForU
 
 
-Bienvenue sur l'application DressForU ! Il s'agit d'une application mobile conçue pour gérer et présenter une collection de robes. Elle permet aux utilisateurs de voir les détails des robes, de mettre à jour les informations sur les robes et de supprimer des robes de la collection.
+DressForU est une application mobile conçue pour gérer et présenter une collection de robes. Elle permet aux utilisateurs de voir les détails des robes, de mettre à jour les informations sur les robes et de supprimer des robes de la collection.
 
 ## Caractéristiques
 
